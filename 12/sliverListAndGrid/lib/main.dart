@@ -60,11 +60,9 @@ class _ProductsState extends State<Products> {
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
-          return Product(
-            list_item[index]['name'],
-            list_item[index]['pic'],
-            list_item[index]['price']
-          );
+          return Product(list_item[index]['name'], list_item[index]['pic'],
+              list_item[index]['price']);
+          // return Test(list_item[index]['name'], list_item[index]['pic']);
         });
   }
 }
@@ -78,6 +76,7 @@ class Product extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 5,
       child: Hero(
           tag: productName,
           child: Material(
@@ -105,3 +104,18 @@ class Product extends StatelessWidget {
     );
   }
 }
+
+// class Test extends StatelessWidget {
+//   final productName;
+//   final productPicture;
+
+//   Test(this.productName, this.productPicture);
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       child: Column(
+//         children: [Text(productName), Image.asset(productPicture)],
+//       ),
+//     );
+//   }
+// }
