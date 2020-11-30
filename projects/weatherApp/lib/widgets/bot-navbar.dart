@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class BottomNavBar extends StatefulWidget {
+class BotNavBar extends StatefulWidget {
   @override
-  _BottomNavBarState createState() => _BottomNavBarState();
+  _BotNavBarState createState() => _BotNavBarState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
+class _BotNavBarState extends State<BotNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(

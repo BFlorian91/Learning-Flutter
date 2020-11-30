@@ -1,10 +1,15 @@
 class Weather {
-  final String description;
-  final double temp;
-  final double feelsLike;
-  final String cityName;
+  String description;
+  double temp;
+  double feelsLike;
+  String cityName;
+  String error;
 
   Weather({this.description, this.temp, this.feelsLike, this.cityName});
+
+  Weather.withError(String errorMessage) {
+    this.error = errorMessage;
+  }
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(

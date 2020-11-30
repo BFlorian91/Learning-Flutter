@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CardLittle extends StatelessWidget {
+class WeatherCard extends StatelessWidget {
   final String cityName;
   final double degree;
   final String weather;
@@ -13,7 +13,7 @@ class CardLittle extends StatelessWidget {
     return result.substring(0, result.indexOf('.'));
   }
 
-  CardLittle({this.cityName, this.degree, this.weather});
+  WeatherCard({this.cityName, this.degree, this.weather});
   @override
   Widget build(BuildContext context) {
     return Container(
