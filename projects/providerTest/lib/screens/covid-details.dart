@@ -10,47 +10,57 @@ class CovidDetails extends StatefulWidget {
 
 class _CovidDetailsState extends State<CovidDetails> {
   final ApiProvider covidStats = ApiProvider();
-  Future<Covid> covid;
+  Future<Covid> _covidDatas;
   final TextEditingController _controller = TextEditingController();
 
   void initState() {
     super.initState();
-    covid = covidStats.fetchDatas();
+    _covidDatas = covidStats.fetchDatas();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            children: [
-              _navigator(_controller),
-              SizedBox(height: 10),
-              Expanded(
+        body: SafeArea(
+      child: FutureBuilder(
+        future: _covidDatas,
+        builder: (BuildContext context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return snapshot.error;
+          }
+          return Container(
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: _navigator(_controller),
+                ),
+                SizedBox(height: 10),
+                Expanded(
                   child: CustomScrollView(
-                slivers: [
-                  SliverList(
-                      delegate: SliverChildListDelegate([
-                        CountryCard('France', '2270573', '52410'),
-                        CountryCard('France', '2270573', '52410'),
-                        CountryCard('France', '2270573', '52410'),
-                        CountryCard('France', '2270573', '52410'),
-                        CountryCard('France', '2270573', '52410'),
-                        CountryCard('France', '2270573', '52410'),
-                        CountryCard('France', '2270573', '52410'),
-                        CountryCard('France', '2270573', '52410'),
-                        CountryCard('France', '2270573', '52410'),
-                  ]))
-                ],
-              )),
-            ],
-          ),
-        ),
+                    slivers: [
+                      SliverList(
+                          delegate: SliverChildListDelegate([
+                        // CountryCard(covidGlobal: snapshot.data.global) update for this
+                      ])),
+                      SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                              (BuildContext context, int index) {
+                        return Center(
+                            child: CountryCard(
+                                covidDatas: snapshot.data.countries[index]));
+                      }, childCount: 191))
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
-    );
-    // body: Center(child: Text('helo world')));
+    ));
   }
 
   Widget _navigator(TextEditingController _controller) {
@@ -60,8 +70,7 @@ class _CovidDetailsState extends State<CovidDetails> {
         labelText: 'Search country',
         labelStyle: TextStyle(color: Colors.pinkAccent[100]),
         border: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.pinkAccent[100]) 
-        ),
+            borderSide: BorderSide(color: Colors.pinkAccent[100])),
         suffixIcon: IconButton(
           onPressed: () => print('search ${_controller.text}'),
           icon: Icon(Icons.location_pin),

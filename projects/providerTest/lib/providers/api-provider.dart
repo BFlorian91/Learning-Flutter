@@ -5,7 +5,7 @@ class ApiProvider {
   final Dio _dio = Dio();
   final String _url = 'https://api.covid19api.com/summary';
 
-  Future <Covid> fetchDatas() async {
+  Future<Covid> fetchDatas() async {
     try {
       Response response = await _dio.get(_url);
       return Covid.fromJson(response.data);

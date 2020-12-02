@@ -1,39 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:providerTest/models/covid.dart';
 
 class CountryCard extends StatelessWidget {
-  final String _country;
-  final String _totalConfirmed;
-  final String _totalDeaths;
+  final Countries covidDatas;
+  final GlobalStats covidGlobal;
 
-  CountryCard(this._country, this._totalConfirmed, this._totalDeaths);
+  CountryCard({this.covidDatas, this.covidGlobal});
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 10,
-      // color: Colors.pinkAccent[100],
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
+    return Container(
+      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+      height: 150,
+      child: Card(
+        elevation: 10,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
         child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ListTile(
-            leading: Icon(Icons.coronavirus_rounded, size: 50),
-            title: Text(
-              '$_country',
-              style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+          children: [
+            Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(covidDatas.country),
+                Text(covidDatas.newConfirmed.toString()),
+                Text(covidDatas.newDeaths.toString()),
+                Text(covidDatas.totalDeaths.toString()),
+              ],
             ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-            Text('☠️: $_totalDeaths', style: TextStyle(color: Colors.black87),),
-            Text('🤮: $_totalConfirmed', style: TextStyle(color: Colors.black87),),
-            ],
-          ),
-          Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20))
-        ],
-      ),
-    );
+            Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20))
+          ],
+        ),
+      ));
   }
 }
