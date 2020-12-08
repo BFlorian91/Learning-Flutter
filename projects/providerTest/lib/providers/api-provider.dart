@@ -39,7 +39,9 @@ class ApiProvider extends ChangeNotifier {
   set setFilteredCountries(List<Countries> countries) {
     if (_isSearching ?? false) {
       _filteredCountries = countries
-          .where((element) => element.country.contains(getInputCountry))
+          .where((element) => element.country
+              .toLowerCase()
+              .contains(getInputCountry.toLowerCase()))
           .toList();
       notifyListeners();
     }
