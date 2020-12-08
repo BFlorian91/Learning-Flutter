@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:providerTest/providers/api-provider.dart';
+
 import 'package:providerTest/screens/covid-details.dart';
 import 'package:providerTest/screens/home-screen.dart';
 
@@ -13,7 +16,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
-        '/covidDetails': (context) => CovidDetails(),
+        '/covidDetails': (context) {
+          return ChangeNotifierProvider(
+            create: (_) => ApiProvider(),
+            child: CovidDetails(),
+          );
+        }
       },
     );
   }
