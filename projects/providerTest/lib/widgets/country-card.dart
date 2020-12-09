@@ -39,15 +39,14 @@ class CountryCard extends StatelessWidget {
         ),
         Divider(color: Colors.black87,),
         Container(
-            // height: 60,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text('🤢: ${countries.newConfirmed.toString()}'),
-                Text('💀: ${countries.newDeaths.toString()}'),
-                Text('☠️: ${countries.totalDeaths.toString()}'),
-              ],
-            ))
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text('🤢: ${countries.newConfirmed.toString()}'),
+              Text('💀: ${countries.newDeaths.toString()}'),
+              Text('☠️: ${countries.totalDeaths.toString()}'),
+            ],
+          ))
       ],
     );
   }
