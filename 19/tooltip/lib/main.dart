@@ -35,15 +35,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Container(
-          child: Column(
-            children: [
-              Image.network('https://img.igen.fr/2017/2/macgpic-1487794681-32564258958959-sc-jpt.jpg'),
-              Tooltip(message: 'It\'s so cool', verticalOffset: 48, height: 50, child: Icon(Icons.add),)
-            ]
-          )
+          child: Container(
+              child: Column(children: [
+        Image.network(
+            'https://img.igen.fr/2017/2/macgpic-1487794681-32564258958959-sc-jpt.jpg'),
+        Tooltip(
+          message: 'It\'s so cool',
+          verticalOffset: 48,
+          height: 50,
+          child: Icon(Icons.add),
         )
-      ),
+      ]))),
     );
   }
 }
