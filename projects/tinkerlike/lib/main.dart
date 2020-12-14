@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import './screens/splashScreen.dart';
+import './providers/apiProvider.dart';
+import './screens/homeScreen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -15,7 +19,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SplashScreen(),
         '/homeScreen': (context) {
-          return ChangeNotifierProvider(create: (_) => ApiProvider(), child: HomeScreen(),)
+          return ChangeNotifierProvider(
+            create: (_) => ApiProvider(),
+            child: HomeScreen(),
+          );
         }
       },
       theme: ThemeData(
