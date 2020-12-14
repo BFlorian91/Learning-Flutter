@@ -1,0 +1,56 @@
+[
+  {
+    "women": [
+      {
+        "id": 0,
+        "isLiked": false,
+        "isSwiped": false,
+        "image": "../images/girl1.jpg"
+      },
+      {
+        "id": 2,
+        "isLiked": false,
+        "isSwiped": false,
+        "image": "../images/girl2.jpg"
+      },
+      {
+        "id": 3,
+        "isLiked": false,
+        "isSwiped": false,
+        "image": "../images/girl3.jpg"
+      },
+      {
+        "id": 4,
+        "isLiked": false,
+        "isSwiped": false,
+        "image": "../images/girl4.jpg"
+      }
+    ],
+    "men": [
+      {
+        "id": 0,
+        "isLiked": false,
+        "isSwiped": false,
+        "image": "../images/girl1.jpg"
+      },
+      {
+        "id": 2,
+        "isLiked": false,
+        "isSwiped": false,
+        "image": "../images/girl2.jpg"
+      },
+      {
+        "id": 3,
+        "isLiked": false,
+        "isSwiped": false,
+        "image": "../images/girl3.jpg"
+      },
+      {
+        "id": 4,
+        "isLiked": false,
+        "isSwiped": false,
+        "image": "../images/girl4.jpg"
+      }
+    ]
+  }
+]
