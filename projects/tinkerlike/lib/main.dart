@@ -11,24 +11,20 @@ void main() {
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => SplashScreen(),
-        '/homeScreen': (context) {
-          return ChangeNotifierProvider(
-            create: (_) => FeedbackPositionProvider(),
-            child: HomeScreen(),
-          );
-        }
-      },
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+        create: (_) => FeedbackPositionProvider(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          initialRoute: '/',
+          routes: {
+            '/': (context) => SplashScreen(),
+            '/homeScreen': (context) => HomeScreen()
+          },
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+        ),
+      );
 }

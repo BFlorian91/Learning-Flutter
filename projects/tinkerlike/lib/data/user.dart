@@ -1,7 +1,5 @@
 import '../models/users.dart';
 
-
-
 final fakeUsers = [
   Users(
       name: 'Lauren Turner',

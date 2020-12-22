@@ -40,11 +40,13 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(width: 16),
         ],
         leading: Icon(Icons.person, color: Colors.grey),
-        title: Text('Tinder',
-            style: GoogleFonts.indieFlower(
-                fontSize: 44,
-                color: Colors.redAccent,
-                fontWeight: FontWeight.bold)),
+        title: Text(
+          'Tinder',
+          style: GoogleFonts.indieFlower(
+              fontSize: 44,
+              color: Colors.redAccent,
+              fontWeight: FontWeight.bold),
+        ),
       );
 
   Widget _buildUser(Users user) {
@@ -54,25 +56,26 @@ class _HomeScreenState extends State<HomeScreen> {
         Provider.of<FeedbackPositionProvider>(context, listen: false);
 
     return Listener(
-        onPointerMove: (pointerEvent) =>
-            provider.updatePosition(pointerEvent.localDelta.dx),
-        onPointerCancel: (_) => provider.resetPosition(),
-        onPointerUp: (_) => provider.resetPosition(),
-        child: Draggable(
+      onPointerMove: (pointerEvent) =>
+          provider.updatePosition(pointerEvent.localDelta.dx),
+      onPointerCancel: (_) => provider.resetPosition(),
+      onPointerUp: (_) => provider.resetPosition(),
+      child: Draggable(
+        child: UserCardWidget(
+          user: user,
+          isUserInFocus: isUserInFocus,
+        ),
+        feedback: Material(
+          type: MaterialType.transparency,
           child: UserCardWidget(
             user: user,
             isUserInFocus: isUserInFocus,
           ),
-          feedback: Material(
-            type: MaterialType.transparency,
-            child: UserCardWidget(
-              user: user,
-              isUserInFocus: isUserInFocus,
-            ),
-          ),
-          childWhenDragging: Container(),
-          onDragEnd: (details) => _onDragEnd(details, user),
-        ));
+        ),
+        childWhenDragging: Container(),
+        onDragEnd: (details) => _onDragEnd(details, user),
+      ),
+    );
   }
 
   void _onDragEnd(DraggableDetails details, Users user) {
@@ -83,6 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
     } else if (details.offset.dx < -minDrag) {
       user.isLiked = true;
     }
-    setState(() => users.remove(user));
+    if (user.isSwipedOff || user.isLiked) setState(() => users.remove(user));
   }
 }

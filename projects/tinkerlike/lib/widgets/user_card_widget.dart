@@ -12,8 +12,9 @@ class UserCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<FeedbackPositionProvider>(context);
-    final swipingDirection = provider.getSwipingDirection;
+    final swipingDirection =
+        Provider.of<FeedbackPositionProvider>(context, listen: true)
+            .getSwipingDirection;
     final size = MediaQuery.of(context).size;
 
     return Container(
@@ -21,8 +22,8 @@ class UserCardWidget extends StatelessWidget {
       width: size.width * 0.95,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(
-            image: AssetImage(user.imgUrl), fit: BoxFit.cover),
+        image:
+            DecorationImage(image: AssetImage(user.imgUrl), fit: BoxFit.cover),
       ),
       child: Container(
         decoration:
