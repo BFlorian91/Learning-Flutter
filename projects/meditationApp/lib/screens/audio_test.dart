@@ -10,6 +10,8 @@ class AudioTest extends StatefulWidget {
 class _AudioTestState extends State<AudioTest> {
   bool isPlaying = false;
 
+  int indexOfClick = 1;
+
   @override
   Widget build(BuildContext context) {
     AudioProvider audioProvider = Provider.of<AudioProvider>(context);
