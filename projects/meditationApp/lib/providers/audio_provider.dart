@@ -9,7 +9,7 @@ class AudioProvider extends ChangeNotifier {
   AudioPlayer player;
   Status isPlaying = Status.soundNotLoaded;
 
-  void playerHandler() async {
+  void playerHandler(String song) async {
     switch (isPlaying) {
       case Status.resume:
         player.resume();
@@ -20,7 +20,7 @@ class AudioProvider extends ChangeNotifier {
         isPlaying = Status.resume;
         break;
       case Status.soundNotLoaded:
-        player = await cache.play('sounds/raining.mp3');
+        player = await cache.play(song);
         isPlaying = Status.paused;
         break;
     }

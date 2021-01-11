@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:meditationApp/widgets/audio_player.dart';
+
+import '../data/datas.dart';
+import '../models/audio_model.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,31 +10,38 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<AudioModel> songs = datas;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hello World'),
+        backgroundColor: Colors.grey[900],
+        elevation: 0,
+        actions: [Icon(Icons.watch)],
+        leading: Icon(Icons.single_bed_sharp),
       ),
       body: CustomScrollView(
         slivers: [
           SliverGrid(
-              delegate:
-                  SliverChildBuilderDelegate((BuildContext context, int index) {
-                return Container(
-                  decoration: BoxDecoration(color: Colors.pink),
-                  child: Center(child: Text('Hello World')),
-                );
-              }),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-              ))
+            delegate:
+                SliverChildBuilderDelegate((BuildContext context, int index) {
+              return Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(datas[index].image), fit: BoxFit.cover),
+                ),
+                child: Center(
+                    child: AudioPlayer(
+                  songSelected: songs[index].song,
+                )),
+              );
+            }, childCount: datas.length),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+          )
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => 'Oopsi',
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
