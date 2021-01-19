@@ -10,17 +10,17 @@ class VideoDescription extends StatelessWidget {
           children: [
             Container(
               height: 10.0,
-              color: Colors.green[300],
+              color: Colors.red[300],
               margin: EdgeInsets.only(top: 10.0),
             ),
             Container(
               height: 10.0,
-              color: Colors.green[300],
+              color: Colors.red[300],
               margin: EdgeInsets.only(top: 10.0),
             ),
             Container(
               height: 10.0,
-              color: Colors.green[300],
+              color: Colors.red[300],
               margin: EdgeInsets.only(top: 10.0),
             ),
           ],
