@@ -8,7 +8,7 @@ class BottomToolbar extends StatelessWidget {
   static const List bottomIcons = [
     {'icon': TikTokIcons.home, 'label': 'home', 'isIcon': true},
     {'icon': TikTokIcons.search, 'label': 'Discover', 'isIcon': true},
-    {'icon': '', 'label': '', 'isIcon': false},
+    {'isIcon': false},
     {'icon': TikTokIcons.messages, 'label': 'Inbox', 'isIcon': true},
     {'icon': TikTokIcons.profile, 'label': 'Me', 'isIcon': true},
   ];

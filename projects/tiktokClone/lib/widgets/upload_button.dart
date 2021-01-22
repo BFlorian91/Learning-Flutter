@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tiktokClone/constants/colors.dart';
+
+import '../constants/colors.dart';
 
 class UploadButton extends StatelessWidget {
   @override
@@ -26,9 +27,7 @@ class UploadButton extends StatelessWidget {
               width: 40,
               height: 35,
               decoration: BoxDecoration(
-                color: primary,
-                borderRadius: BorderRadius.circular(8.0)
-              ),  
+                  color: primary, borderRadius: BorderRadius.circular(8.0)),
             ),
           ),
           Positioned(
@@ -37,10 +36,11 @@ class UploadButton extends StatelessWidget {
               width: 40,
               height: 35,
               decoration: BoxDecoration(
-                color: white,
-                borderRadius: BorderRadius.circular(8.0)
+                  color: white, borderRadius: BorderRadius.circular(8.0)),
+              child: Icon(
+                Icons.add,
+                color: black,
               ),
-              child: Icon(Icons.add),
             ),
           )
         ],

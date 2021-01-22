@@ -16,39 +16,43 @@ class ActionsToolbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 100.0,
-        height: MediaQuery.of(context).size.height / 2,
-        color: Colors.black87,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: List<Widget>.generate(rightPannelIcons.length, (index) {
-              switch (rightPannelIcons[index]['isIcon']) {
-                case iconType.isIcon:
-                  return InkWell(
-                      onTap: () => print('rightbutton pressed...'),
-                      child: _iconsBuilder(index));
-                  break;
-                case iconType.isProfilePicture:
-                  return InkWell(
-                    onTap: () => print('NotButton press rignt...'),
-                    child: _profilePicture,
-                  );
-                  break;
-                case iconType.isAlbumPicture:
-                  return InkWell(
-                    onTap: () => print('Album button pressed ...'),
-                    child: _albumPicture,
-                  );
-                default:
-                  return InkWell(
-                    onTap: () => print('tripleDots pressed ...'),
-                    child: Icon(
-                      rightPannelIcons[index]['icon'],
-                      color: white,
-                    ),
-                  );
-              }
-            })));
+      width: 60.0,
+      height: MediaQuery.of(context).size.height / 2.3, /// Pas ouff need update !!!
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: List<Widget>.generate(
+          rightPannelIcons.length,
+          (index) {
+            switch (rightPannelIcons[index]['isIcon']) {
+              case iconType.isIcon:
+                return InkWell(
+                    onTap: () => print('rightbutton pressed...'),
+                    child: _iconsBuilder(index));
+                break;
+              case iconType.isProfilePicture:
+                return InkWell(
+                  onTap: () => print('NotButton press rignt...'),
+                  child: _profilePicture,
+                );
+                break;
+              case iconType.isAlbumPicture:
+                return InkWell(
+                  onTap: () => print('Album button pressed ...'),
+                  child: _albumPicture,
+                );
+              default:
+                return InkWell(
+                  onTap: () => print('tripleDots pressed ...'),
+                  child: Icon(
+                    rightPannelIcons[index]['icon'],
+                    color: white,
+                  ),
+                );
+            }
+          },
+        ),
+      ),
+    );
   }
 
   Widget get _profilePicture => Container(
@@ -63,9 +67,7 @@ class ActionsToolbar extends StatelessWidget {
                 border: Border.all(color: white),
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: NetworkImage(
-                    'https://zdnet2.cbsistatic.com/hub/i/2019/11/26/a6a43d32-9a6d-4eaa-8507-53d4bbbf4564/elon-musk-reveals-teslas-electric-cybert-5ddbc218c2ecca0001b7f73a-1-nov-26-2019-21-07-07-poster.jpg',
-                  ),
+                  image: AssetImage('assets/images/pp.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -128,12 +130,11 @@ class ActionsToolbar extends StatelessWidget {
                 width: 30,
                 height: 30,
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: NetworkImage(
-                          'https://images.genius.com/a1cc1b18cbdf8318dac5df676455426d.1000x1000x1.png',
-                        ),
-                        fit: BoxFit.cover)),
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/24kGoldn.png'),
+                      fit: BoxFit.cover),
+                ),
               ),
             )
           ],
