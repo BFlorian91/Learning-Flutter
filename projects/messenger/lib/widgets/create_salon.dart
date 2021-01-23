@@ -26,9 +26,25 @@ class _CreateSalonState extends State<CreateSalon> {
           listOfImages.length,
           (index) => Padding(
             padding: const EdgeInsets.all(4.0),
-            child: CircleAvatar(
-              radius: 35,
-              backgroundImage: AssetImage(listOfImages[index]),
+            child: Stack(
+              children: [
+                CircleAvatar(
+                  radius: 35,
+                  backgroundImage: AssetImage(listOfImages[index]),
+                ),
+                Positioned(
+                  bottom: 8,
+                  right: 2,
+                  child: Container(
+                    width: 15,
+                    height: 15,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.green,
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
         ),
