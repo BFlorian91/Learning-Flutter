@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/widgets/chat_list.dart';
 import 'package:messenger/widgets/create_salon.dart';
 
 import '../widgets/search_bar.dart';
@@ -16,7 +17,10 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: [
           Column(
-            children: [_topSection,],
+            children: [
+              _topSection,
+              _middleSection,
+            ],
           )
         ],
       ),
@@ -32,4 +36,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       );
+
+  Widget get _middleSection => ChatList();
 }
